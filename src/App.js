@@ -14,7 +14,7 @@ const App = (props) => {
   };
 
   const buyItem = item => {
-    // dipsatch an action here to add an item
+    // dispatch an action here to add an item
     props.addFeature(item)
   };
 
