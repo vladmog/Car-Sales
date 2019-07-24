@@ -23,23 +23,28 @@ export default function reducer (state = defaultState, action) {
         case ADD_FEATURE:
             return {
                 ...state,
+                additionalPrice: state.additionalPrice + action.payload.price,
                 car: {
                     ...state.car,
                     features: [
                         ...state.car.features,
                         action.payload
                     ]
-                }
+                },
+                store: state.store.filter(feature => feature.id !== action.payload.id)
             }
         case SUBTRACT_FEATURE:
             return {
                 ...state,
+                additionalPrice: state.additionalPrice - action.payload.price,
                 car: {
                     ...state.car,
-                    features: state.car.features.filter(feature => {
-                        return feature.id !== action.payload.id
-                    })
-                }
+                    features: state.car.features.filter(feature => feature.id !== action.payload.id)
+                },
+                store: [
+                    ...state.store,
+                    action.payload
+                ]
             }
         default:
             return state;
