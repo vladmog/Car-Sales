@@ -1,4 +1,4 @@
-import {ADD_TODO} from '../actions/actions';
+import {ADD_FEATURE} from '../actions/actions';
 
 const defaultState = {
     additionalPrice: 0,
@@ -19,9 +19,16 @@ const defaultState = {
 
 export default function reducer (state = defaultState, action) {
     switch (action.type){
-        case ADD_TODO:
+        case ADD_FEATURE:
             return {
-                ...state
+                ...state,
+                car: {
+                    ...state.car,
+                    features: [
+                        ...state.car.features,
+                        action.payload
+                    ]
+                }
             }
         default:
             return state;

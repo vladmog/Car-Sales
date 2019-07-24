@@ -1,5 +1,5 @@
-export const ADD_TODO = "ADD_TODO";
+export const ADD_FEATURE = "ADD_FEATURE";
 
-export function addToDo(text){
-    return {type: ADD_TODO}
+export function addFeature(item){
+    return {type: ADD_FEATURE, payload: item}
 }
