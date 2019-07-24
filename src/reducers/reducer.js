@@ -1,4 +1,5 @@
-import {ADD_FEATURE} from '../actions/actions';
+import {ADD_FEATURE, SUBTRACT_FEATURE} from '../actions/actions';
+
 
 const defaultState = {
     additionalPrice: 0,
@@ -28,6 +29,16 @@ export default function reducer (state = defaultState, action) {
                         ...state.car.features,
                         action.payload
                     ]
+                }
+            }
+        case SUBTRACT_FEATURE:
+            return {
+                ...state,
+                car: {
+                    ...state.car,
+                    features: state.car.features.filter(feature => {
+                        return feature.id !== action.payload.id
+                    })
                 }
             }
         default:
